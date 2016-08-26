@@ -57,6 +57,8 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
         _colorTitleNormal = [UIColor blackColor];
         _colorTitleHighlighted = [UIColor lightGrayColor];
         _fountTitle = [UIFont systemFontOfSize:14.0];
+        
+        self.bgColor = [UIColor clearColor];
     }
     
     return self;
@@ -267,7 +269,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
         [weakNetwork exitApplication];
     }];
     
-    networkView.backgroundColor = [UIColor grayColor];
+    networkView.backgroundColor = _bgColor;
 }
 
 - (void)exitApplication

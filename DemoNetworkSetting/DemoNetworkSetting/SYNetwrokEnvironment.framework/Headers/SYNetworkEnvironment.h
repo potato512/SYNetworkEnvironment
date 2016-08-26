@@ -63,6 +63,8 @@ static NSString *const keyNetworkEnvironmentOhter;
 @property (nonatomic, strong) UIColor *colorTitleHighlighted;
 /// 按钮标题字体大小（默认14.0）
 @property (nonatomic, strong) UIFont *fountTitle;
+/// 背景颜色（默认透明色）
+@property (nonatomic, strong) UIColor *bgColor;
 
 + (SYNetworkEnvironment *)shareNetworkEnvironment;
 
