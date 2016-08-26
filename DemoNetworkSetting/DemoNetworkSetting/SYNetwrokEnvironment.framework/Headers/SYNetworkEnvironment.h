@@ -6,6 +6,7 @@
 //  Copyright © 2016年 zhangshaoyu. All rights reserved.
 //  网络环境切换
 //
+//  https://github.com/potato512/SYNetworkEnvironment
 // 使用说明
 // 1、导入 SYNetworkEnvironment.framework 文件
 // 2、导入 SYNetworkEnvironment.plist 文件，并设置参数，如：
