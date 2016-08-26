@@ -22,15 +22,15 @@
 }
 ~~~
  * 5、使用
-  * （1）添加到视图控制器，便于显示交互视图
-// 退出，或不退出APP
+  * （1）添加到视图控制器，便于显示交互视图。如果网络环境的keyNetworkEnvironment值为1，则在对应视图控制器的导航栏右按钮位置显示交互按钮；如果值为0，则不显示，但可以在对应视图控制器的导航栏右按钮位置通过连续点击5次显示交互选择视图。
 ~~~javascript
+// 退出，或不退出APP
 [NetworkEnvironment networkButtonWithNavigation:self exitApp:NO settingComplete:^{
-//        UIWindow *window = [[UIApplication sharedApplication].delegate window];
-//        window.rootViewController = [UIApplication sharedApplication].delegate
+    // UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    // window.rootViewController = [UIApplication sharedApplication].delegate
 
-AppDelegate *appDelegate = ((AppDelegate *)[UIApplication sharedApplication].delegate);
-[appDelegate initRootViewController];
+    AppDelegate *appDelegate = ((AppDelegate *)[UIApplication sharedApplication].delegate);
+    [appDelegate initRootViewController];
 }];
 ~~~
   * （2）获取定义的网络环境，如：
