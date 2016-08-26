@@ -53,11 +53,14 @@ NSLog(@"当前网络环境地址：%@", networkHost);
 ![image](./images/2.png)
 
  * 使用效果图
+
  * 选择网络环境前
 ![image](./images/5-1.png)
 
+
  * 选择网络环境
 ![image](./images/5-2.png)
+
 
  * 选择网络环境后
 ![image](./images/5-3.png)
