@@ -298,17 +298,26 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 #pragma mark 响应方法
 
-- (void)networkClick:(UIButton *)button
+- (void)networkClick:(id)sender
 {
+    NSLog(@"设置前——当前网络环境地址：%@", networkHost);
+    
     __weak typeof(self) weakNetwork = self;
     
     NSString *name = [self getDefaultNetworkName];
     SYNetworkEnvironmentView *networkView = [[SYNetworkEnvironmentView alloc] initWithNetwork:self.networkDict selectedName:name clickComplete:^(NSString *networkName) {
         
-        [button setTitle:networkName forState:UIControlStateNormal];
+        // 保存选择环境
         [weakNetwork setDefaultNetwork:networkName];
-        // 退出重启，重新连接中间键
+        // 退出重启，或重新连接
         [weakNetwork exitApplication];
+        
+        if ([sender isKindOfClass:[UIButton class]])
+        {
+            [sender setTitle:networkName forState:UIControlStateNormal];
+        }
+        
+        NSLog(@"设置后——当前网络环境地址：%@", networkHost);
     }];
     
     networkView.backgroundColor = _bgColor;
