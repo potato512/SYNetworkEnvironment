@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 
-#import "SYNetwrokEnvironment.framework/Headers/SYNetworkEnvironment.h"
+#import "SYNetworkEnvironment.h"
 
 @interface ViewController ()
 
@@ -24,18 +24,23 @@
     self.title = @"网络环境设置";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // 退出APP
-    [NetworkEnvironment networkButtonWithNavigation:self exitApp:YES settingComplete:^{
-        
-    }];
+    // 添加到视图控制器，退出APP
+//    [NetworkEnvironment networkButtonWithNavigation:self exitApp:YES settingComplete:^{
+//        
+//    }];
 
-    // 不退出APP
+    // 添加到视图控制器，不退出APP
     [NetworkEnvironment networkButtonWithNavigation:self exitApp:NO settingComplete:^{
 //        UIWindow *window = [[UIApplication sharedApplication].delegate window];
 //        window.rootViewController = [UIApplication sharedApplication].delegate
         
         AppDelegate *appDelegate = ((AppDelegate *)[UIApplication sharedApplication].delegate);
         [appDelegate initRootViewController];
+    }];
+    
+    // 添加到视图指定位置
+    [NetworkEnvironment networkButtonWithView:self.view frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO settingComplete:^{
+        
     }];
     
     NSLog(@"当前网络环境地址：%@", networkHost);

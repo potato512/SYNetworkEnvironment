@@ -1,6 +1,9 @@
 # SYNetworkEnvironment
 网络环境设置（可设置多个网络环境），便于开发
 
+* 使用效果图
+![networkSetting.gif](./images/networkSetting.gif)
+
 # 网络环境配置的framework使用
  * 1、导入 SYNetworkEnvironment.framework 文件
  * 2、导入 SYNetworkEnvironment.plist 文件，并设置参数，如：
@@ -11,7 +14,7 @@
  * 3、导入头文件，如：
 #import "SYNetwrokEnvironment.framework/Headers/SYNetworkEnvironment.h"
  * 4、初始化网络环境，即在方法"- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}"中进行初始化。如：
-~~~javascript
+~~~ javascript
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -23,7 +26,7 @@
 ~~~
  * 5、使用
   * （1）添加到视图控制器，便于显示交互视图。如果网络环境的keyNetworkEnvironment值为1，则在对应视图控制器的导航栏右按钮位置显示交互按钮；如果值为0，则不显示，但可以在对应视图控制器的导航栏右按钮位置通过连续点击5次显示交互选择视图。
-~~~javascript
+~~~ javascript
 // 退出，或不退出APP
 [NetworkEnvironment networkButtonWithNavigation:self exitApp:NO settingComplete:^{
     // UIWindow *window = [[UIApplication sharedApplication].delegate window];
@@ -33,8 +36,14 @@
     [appDelegate initRootViewController];
 }];
 ~~~
-  * （2）获取定义的网络环境，如：
-~~~javascript
+  * （2）添加到指定视图的指定位置
+~~~ javascript
+[NetworkEnvironment networkButtonWithView:self.view frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO settingComplete:^{
+
+}];
+~~~
+  * （3）获取定义的网络环境，如：
+~~~ javascript
 NSLog(@"当前网络环境地址：%@", networkHost);
 ~~~
 
@@ -52,19 +61,6 @@ NSLog(@"当前网络环境地址：%@", networkHost);
 * SYNetworkEnvironment.plist 文件配置
 ![image](./images/2.png)
 
- * 使用效果图
-
- * 选择网络环境前
-
-![image](./images/5-1.png)
-
- * 选择网络环境
-
-![image](./images/5-2.png)
-
- * 选择网络环境后
-
-![image](./images/5-3.png)
 
 
 

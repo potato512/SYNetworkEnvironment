@@ -224,6 +224,8 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 /************************************************************************/
 
+#pragma mark 设置方法
+
 // 设置APP环境按钮
 - (void)networkButtonWithNavigation:(UIViewController *)controller exitApp:(BOOL)isExit settingComplete:(void (^)(void))complete
 {
@@ -257,13 +259,53 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     controller.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
+- (void)networkButtonWithView:(UIView *)view frame:(CGRect)rect exitApp:(BOOL)isExit settingComplete:(void (^)(void))complete
+{
+    self.isExitApp = isExit;
+    
+    if (complete)
+    {
+        self.settingComplete = [complete copy];
+    }
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, 0.0, 80.0, 44.0);
+    [button setTitleEdgeInsets:UIEdgeInsetsZero];
+    [button setTitleColor:_colorTitleNormal forState:UIControlStateNormal];
+    [button setTitleColor:_colorTitleHighlighted forState:UIControlStateHighlighted];
+    button.titleLabel.font = _fountTitle;
+    
+    if (1 == self.isPublicNetworkEnvironment)
+    {
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(networkClick:)];
+        tapRecognizer.numberOfTapsRequired = 5;
+        [button addGestureRecognizer:tapRecognizer];
+    }
+    else
+    {
+        NSString *name = [self getDefaultNetworkName];
+        button.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [button setTitle:name forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(networkClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    if (view)
+    {
+        [view addSubview:button];
+        button.frame = rect;
+    }
+}
+
+#pragma mark 响应方法
+
 - (void)networkClick:(UIButton *)button
 {
-    SYNetworkEnvironment __weak *weakNetwork = self;
+    __weak typeof(self) weakNetwork = self;
     
     NSString *name = [self getDefaultNetworkName];
     SYNetworkEnvironmentView *networkView = [[SYNetworkEnvironmentView alloc] initWithNetwork:self.networkDict selectedName:name clickComplete:^(NSString *networkName) {
         
+        [button setTitle:networkName forState:UIControlStateNormal];
         [weakNetwork setDefaultNetwork:networkName];
         // 退出重启，重新连接中间键
         [weakNetwork exitApplication];
