@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A72D65C71E136717008BF580 /* SYNetworkEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D65C21E136717008BF580 /* SYNetworkEnvironment.m */; };
-		A72D65C81E136717008BF580 /* SYNetworkEnvironment.plist in Resources */ = {isa = PBXBuildFile; fileRef = A72D65C31E136717008BF580 /* SYNetworkEnvironment.plist */; };
 		A72D65C91E136717008BF580 /* SYNetworkEnvironmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D65C51E136717008BF580 /* SYNetworkEnvironmentView.m */; };
 		A75752931D6C1EB900D1DEC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752921D6C1EB900D1DEC0 /* main.m */; };
 		A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752951D6C1EB900D1DEC0 /* AppDelegate.m */; };
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		A72D65C11E136717008BF580 /* SYNetworkEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironment.h; sourceTree = "<group>"; };
 		A72D65C21E136717008BF580 /* SYNetworkEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironment.m; sourceTree = "<group>"; };
-		A72D65C31E136717008BF580 /* SYNetworkEnvironment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SYNetworkEnvironment.plist; sourceTree = "<group>"; };
 		A72D65C41E136717008BF580 /* SYNetworkEnvironmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentView.h; sourceTree = "<group>"; };
 		A72D65C51E136717008BF580 /* SYNetworkEnvironmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentView.m; sourceTree = "<group>"; };
 		A757528E1D6C1EB900D1DEC0 /* DemoNetworkSetting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoNetworkSetting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +89,6 @@
 			children = (
 				A72D65C11E136717008BF580 /* SYNetworkEnvironment.h */,
 				A72D65C21E136717008BF580 /* SYNetworkEnvironment.m */,
-				A72D65C31E136717008BF580 /* SYNetworkEnvironment.plist */,
 				A72D65C41E136717008BF580 /* SYNetworkEnvironmentView.h */,
 				A72D65C51E136717008BF580 /* SYNetworkEnvironmentView.m */,
 			);
@@ -267,7 +264,6 @@
 			files = (
 				A75752A11D6C1EB900D1DEC0 /* LaunchScreen.storyboard in Resources */,
 				A757529E1D6C1EB900D1DEC0 /* Assets.xcassets in Resources */,
-				A72D65C81E136717008BF580 /* SYNetworkEnvironment.plist in Resources */,
 				A757529C1D6C1EB900D1DEC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

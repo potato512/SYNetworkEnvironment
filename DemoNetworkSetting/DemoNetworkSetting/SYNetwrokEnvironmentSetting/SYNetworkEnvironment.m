@@ -16,17 +16,14 @@ typedef void (^SettingComplete)(void);
 /************************************************************************/
 
 static NSString *const keyNetwork = @"SYNetworkSettingHost";
-
 #define NetworkUserDefault [NSUserDefaults standardUserDefaults]
 
 /************************************************************************/
 
-/// plist默认键名称
 static NSString *const keyNetworkEnvironment        = @"keyNetworkEnvironment";
 static NSString *const keyNetworkEnvironmentPublic  = @"keyNetworkEnvironmentPublic";
 static NSString *const keyNetworkEnvironmentDevelop = @"keyNetworkEnvironmentDevelop";
 static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOhter";
-/// plist默认键名称
 
 /************************************************************************/
 
@@ -36,12 +33,14 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 @property (nonatomic, assign) BOOL isExitApp;
 
 @property (nonatomic, assign) NSInteger isPublicNetworkEnvironment;
-/// 网络环境设置（名称，url地址；注：名称为键、url地址为值）
+///// 网络环境设置（名称，url地址；注：名称为键、url地址为值）
 @property (nonatomic, strong) NSDictionary *networkDict;
 @property (nonatomic, strong) NSString *publicName;
 @property (nonatomic, strong) NSString *publicUrl;
 @property (nonatomic, strong) NSString *developName;
 @property (nonatomic, strong) NSString *developUrl;
+// 环境配置变量
+@property (nonatomic, strong) NSMutableDictionary *environmentDict;
 
 @end
 
@@ -54,9 +53,9 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     self = [super init];
     if (self)
     {
-        _colorTitleNormal = [UIColor blackColor];
-        _colorTitleHighlighted = [UIColor lightGrayColor];
-        _fountTitle = [UIFont systemFontOfSize:14.0];
+        _titleColorNormal = [UIColor blackColor];
+        _titleColorHlight = [UIColor lightGrayColor];
+        _titleFont = [UIFont systemFontOfSize:14.0];
         
         self.bgColor = [UIColor clearColor];
     }
@@ -88,39 +87,28 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 - (void)readConfigNetwork
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SYNetworkEnvironment" ofType:@"plist"];
-    NSAssert(filePath != nil, @"network config plist is not exist");
-    
-    NSDictionary *configDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    
-#ifdef DEBUG
-    NSLog(@"configDict = %@", configDict);
-#else
-   
-#endif
-    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    for (NSString *key in configDict.allKeys)
+    for (NSString *key in self.environmentDict.allKeys)
     {
         if ([key isEqualToString:keyNetworkEnvironment])
         {
             // 网络环境
-            NSString *value = [configDict objectForKey:key];
+            NSString *value = [self.environmentDict objectForKey:key];
             self.isPublicNetworkEnvironment = value.integerValue;
         }
         else if ([key isEqualToString:keyNetworkEnvironmentDevelop])
         {
             self.developName = @"默认开发测试环境";
-            self.developUrl = [configDict objectForKey:key];
+            self.developUrl = [self.environmentDict objectForKey:key];
         }
         else if ([key isEqualToString:keyNetworkEnvironmentPublic])
         {
             self.publicName = @"默认发布环境";
-            self.publicUrl = [configDict objectForKey:key];
+            self.publicUrl = [self.environmentDict objectForKey:key];
         }
         else
         {
-            NSDictionary *dictTmp = [configDict objectForKey:key];
+            NSDictionary *dictTmp = [self.environmentDict objectForKey:key];
             if (dictTmp && 0 != dictTmp.count)
             {
                 [dict setDictionary:dictTmp];
@@ -135,7 +123,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     NSAssert(self.publicUrl != nil, @"self.publicUrl must be not nil");
     NSAssert(self.developName != nil, @"self.developName must be not nil");
     NSAssert(self.developUrl != nil, @"self.developUrl must be not nil");
-    NSAssert(self.networkDict != nil, @"self.networkDict must be not nil");
+    NSAssert(self.environmentDict != nil, @"self.networkDict must be not nil");
 }
 
 /************************************************************************/
@@ -144,7 +132,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 - (void)setDefaultNetwork
 {
     NSString *networkName = [self getDefaultNetworkName];
-    NSArray *nameArray = self.networkDict.allKeys;
+    NSArray *nameArray = self.environmentDict.allKeys;
     
     for (NSString *name in nameArray)
     {
@@ -227,7 +215,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 #pragma mark 设置方法
 
 // 设置APP环境按钮
-- (void)networkButtonWithNavigation:(UIViewController *)controller exitApp:(BOOL)isExit settingComplete:(void (^)(void))complete
+- (void)networkButtonWithNavigation:(UIViewController *)controller exitApp:(BOOL)isExit complete:(void (^)(void))complete
 {
     self.isExitApp = isExit;
     
@@ -239,9 +227,9 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, 0.0, 80.0, 44.0);
     [button setTitleEdgeInsets:UIEdgeInsetsZero];
-    [button setTitleColor:_colorTitleNormal forState:UIControlStateNormal];
-    [button setTitleColor:_colorTitleHighlighted forState:UIControlStateHighlighted];
-    button.titleLabel.font = _fountTitle;
+    [button setTitleColor:_titleColorNormal forState:UIControlStateNormal];
+    [button setTitleColor:_titleColorHlight forState:UIControlStateHighlighted];
+    button.titleLabel.font = _titleFont;
     
     if (1 == self.isPublicNetworkEnvironment)
     {
@@ -259,7 +247,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     controller.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
-- (void)networkButtonWithView:(UIView *)view frame:(CGRect)rect exitApp:(BOOL)isExit settingComplete:(void (^)(void))complete
+- (void)networkButtonWithView:(UIView *)view frame:(CGRect)rect exitApp:(BOOL)isExit complete:(void (^)(void))complete
 {
     self.isExitApp = isExit;
     
@@ -271,9 +259,9 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, 0.0, 80.0, 44.0);
     [button setTitleEdgeInsets:UIEdgeInsetsZero];
-    [button setTitleColor:_colorTitleNormal forState:UIControlStateNormal];
-    [button setTitleColor:_colorTitleHighlighted forState:UIControlStateHighlighted];
-    button.titleLabel.font = _fountTitle;
+    [button setTitleColor:_titleColorNormal forState:UIControlStateNormal];
+    [button setTitleColor:_titleColorHlight forState:UIControlStateHighlighted];
+    button.titleLabel.font = _titleFont;
     
     if (1 == self.isPublicNetworkEnvironment)
     {
@@ -300,7 +288,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 - (void)networkClick:(id)sender
 {
-    NSLog(@"设置前——当前网络环境地址：%@", networkHost);
+    NSLog(@"设置前：(%@)%@", [NetworkRequestEnvironment getDefaultNetworkName], NetworkRequestHost);
     
     __weak typeof(self) weakNetwork = self;
     
@@ -317,7 +305,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
             [sender setTitle:networkName forState:UIControlStateNormal];
         }
         
-        NSLog(@"设置后——当前网络环境地址：%@", networkHost);
+        NSLog(@"设置后：(%@)%@", [NetworkRequestEnvironment getDefaultNetworkName], NetworkRequestHost);
     }];
     
     networkView.backgroundColor = _bgColor;
@@ -338,5 +326,37 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 }
 
 /************************************************************************/
+
+#pragma mark - setter
+
+- (void)setNetworkEnviroment:(BOOL)networkEnviroment
+{
+    NSNumber *number = @(networkEnviroment);
+    [self.environmentDict setObject:number forKey:keyNetworkEnvironment];
+}
+
+- (void)setNetworkServiceDebug:(NSString *)networkServiceDebug
+{
+    [self.environmentDict setObject:networkServiceDebug forKey:keyNetworkEnvironmentDevelop];
+}
+
+- (void)setNetworkServiceRelease:(NSString *)networkServiceRelease
+{
+    [self.environmentDict setObject:networkServiceRelease forKey:keyNetworkEnvironmentPublic];
+}
+
+- (void)setNetworkServiceDebugDict:(NSDictionary *)networkServiceDebugDict
+{
+    [self.environmentDict setObject:networkServiceDebugDict forKey:keyNetworkEnvironmentOhter];
+}
+
+- (NSMutableDictionary *)environmentDict
+{
+    if (_environmentDict == nil)
+    {
+        _environmentDict = [NSMutableDictionary dictionary];
+    }
+    return _environmentDict;
+}
 
 @end

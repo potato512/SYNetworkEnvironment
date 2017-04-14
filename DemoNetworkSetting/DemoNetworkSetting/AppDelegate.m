@@ -22,10 +22,17 @@
     // Override point for customization after application launch.
     
     
-    NetworkEnvironment.colorTitleNormal = [UIColor redColor];
-    NetworkEnvironment.colorTitleHighlighted = [UIColor greenColor];
-    NetworkEnvironment.fountTitle = [UIFont systemFontOfSize:16.0];
-    [NetworkEnvironment initializeNetworkEnvironment];
+    // 标题按钮设置
+    NetworkRequestEnvironment.titleFont = [UIFont systemFontOfSize:13.0];
+    NetworkRequestEnvironment.titleColorNormal = [UIColor blackColor];
+    NetworkRequestEnvironment.titleColorHlight = [UIColor redColor];
+    // 环境设置
+    NetworkRequestEnvironment.networkEnviroment = 0;
+    NetworkRequestEnvironment.networkServiceDebug = @"http://www.hao123.com";
+    NetworkRequestEnvironment.networkServiceRelease = @"http://www.baidu.com";
+    NetworkRequestEnvironment.networkServiceDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
+    // 初始化
+    [NetworkRequestEnvironment initializeNetworkEnvironment];
     
     
     
