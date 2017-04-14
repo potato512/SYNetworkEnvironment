@@ -1,7 +1,8 @@
 # SYNetworkEnvironment
 网络环境设置（可设置多个网络环境），便于开发。避免切换不同的环境进行测试时，不断地重新进打包安装包文件。
 
-* 使用效果图
+ * 使用效果图
+
 ![networkSetting.gif](./images/networkSetting.gif)
 
 # 网络环境配置组件的使用
@@ -10,10 +11,6 @@
 ~~~ javascript
 #import "SYNetworkEnvironment.h"
 ~~~ 
-  * 参数1、键：keyNetworkEnvironment，值：开发测试环境0，或发布环境1
-  * 参数2、键：keyNetworkEnvironmentPublic，值：发布环境服务器地址
-  * 参数3、键：keyNetworkEnvironmentDevelop，值：开发测试环境服务器地址
-  * 参数4、键：keyNetworkEnvironmentOhter，值：其他开发测试环境字典（键值对，其中键为名称，值为服务器地址）
  * 3、初始化网络环境，即在方法"- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}"中进行初始化。如：
 ~~~ javascript
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -65,6 +62,22 @@ NSLog(@"url = %@", url);
    * b）环境地址
    * c）初始化initializeNetworkEnvironment
   * （2）网络环境设置的交互视图显示在用户自定义的视图控制器中，或在视图中
+
+
+# 配置图
+## 导入资源组件
+
+![1.png](./images/1.png)
+## 导入头文件及配置初始化
+
+![2.png](./images/2.png)
+## 使用
+
+![2.png](./images/3.png)
+
+# 设计原理
+
+![网络环境配置组件.png](./images/网络环境配置组件.png)
 
 
 # 修改完善

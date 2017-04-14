@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A72D65C71E136717008BF580 /* SYNetworkEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D65C21E136717008BF580 /* SYNetworkEnvironment.m */; };
-		A72D65C91E136717008BF580 /* SYNetworkEnvironmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D65C51E136717008BF580 /* SYNetworkEnvironmentView.m */; };
 		A75752931D6C1EB900D1DEC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752921D6C1EB900D1DEC0 /* main.m */; };
 		A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752951D6C1EB900D1DEC0 /* AppDelegate.m */; };
 		A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752981D6C1EB900D1DEC0 /* ViewController.m */; };
@@ -17,6 +15,8 @@
 		A75752A11D6C1EB900D1DEC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A757529F1D6C1EB900D1DEC0 /* LaunchScreen.storyboard */; };
 		A75752AC1D6C1EB900D1DEC0 /* DemoNetworkSettingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752AB1D6C1EB900D1DEC0 /* DemoNetworkSettingTests.m */; };
 		A75752B71D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752B61D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m */; };
+		A76379A91EA082700096433D /* SYNetworkEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A76379A61EA082700096433D /* SYNetworkEnvironment.m */; };
+		A76379AA1EA082700096433D /* SYNetworkEnvironmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A76379A81EA082700096433D /* SYNetworkEnvironmentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A72D65C11E136717008BF580 /* SYNetworkEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironment.h; sourceTree = "<group>"; };
-		A72D65C21E136717008BF580 /* SYNetworkEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironment.m; sourceTree = "<group>"; };
-		A72D65C41E136717008BF580 /* SYNetworkEnvironmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentView.h; sourceTree = "<group>"; };
-		A72D65C51E136717008BF580 /* SYNetworkEnvironmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentView.m; sourceTree = "<group>"; };
 		A757528E1D6C1EB900D1DEC0 /* DemoNetworkSetting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoNetworkSetting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75752921D6C1EB900D1DEC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A75752941D6C1EB900D1DEC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,6 +53,10 @@
 		A75752B21D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoNetworkSettingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75752B61D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNetworkSettingUITests.m; sourceTree = "<group>"; };
 		A75752B81D6C1EB900D1DEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A76379A51EA082700096433D /* SYNetworkEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironment.h; sourceTree = "<group>"; };
+		A76379A61EA082700096433D /* SYNetworkEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironment.m; sourceTree = "<group>"; };
+		A76379A71EA082700096433D /* SYNetworkEnvironmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentView.h; sourceTree = "<group>"; };
+		A76379A81EA082700096433D /* SYNetworkEnvironmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,17 +84,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A72D65BF1E136717008BF580 /* SYNetwrokEnvironmentSetting */ = {
-			isa = PBXGroup;
-			children = (
-				A72D65C11E136717008BF580 /* SYNetworkEnvironment.h */,
-				A72D65C21E136717008BF580 /* SYNetworkEnvironment.m */,
-				A72D65C41E136717008BF580 /* SYNetworkEnvironmentView.h */,
-				A72D65C51E136717008BF580 /* SYNetworkEnvironmentView.m */,
-			);
-			path = SYNetwrokEnvironmentSetting;
-			sourceTree = "<group>";
-		};
 		A75752851D6C1EB900D1DEC0 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +111,7 @@
 				A75752951D6C1EB900D1DEC0 /* AppDelegate.m */,
 				A75752971D6C1EB900D1DEC0 /* ViewController.h */,
 				A75752981D6C1EB900D1DEC0 /* ViewController.m */,
-				A72D65BF1E136717008BF580 /* SYNetwrokEnvironmentSetting */,
+				A76379A41EA082700096433D /* SYNetwrokEnvironment */,
 				A757529A1D6C1EB900D1DEC0 /* Main.storyboard */,
 				A757529D1D6C1EB900D1DEC0 /* Assets.xcassets */,
 				A757529F1D6C1EB900D1DEC0 /* LaunchScreen.storyboard */,
@@ -156,6 +145,17 @@
 				A75752B81D6C1EB900D1DEC0 /* Info.plist */,
 			);
 			path = DemoNetworkSettingUITests;
+			sourceTree = "<group>";
+		};
+		A76379A41EA082700096433D /* SYNetwrokEnvironment */ = {
+			isa = PBXGroup;
+			children = (
+				A76379A51EA082700096433D /* SYNetworkEnvironment.h */,
+				A76379A61EA082700096433D /* SYNetworkEnvironment.m */,
+				A76379A71EA082700096433D /* SYNetworkEnvironmentView.h */,
+				A76379A81EA082700096433D /* SYNetworkEnvironmentView.m */,
+			);
+			path = SYNetwrokEnvironment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,8 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A72D65C91E136717008BF580 /* SYNetworkEnvironmentView.m in Sources */,
-				A72D65C71E136717008BF580 /* SYNetworkEnvironment.m in Sources */,
+				A76379AA1EA082700096433D /* SYNetworkEnvironmentView.m in Sources */,
+				A76379A91EA082700096433D /* SYNetworkEnvironment.m in Sources */,
 				A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */,
 				A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */,
 				A75752931D6C1EB900D1DEC0 /* main.m in Sources */,

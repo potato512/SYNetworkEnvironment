@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
-#import "SYNetwrokEnvironmentSetting/SYNetworkEnvironment.h"
+#import "SYNetworkEnvironment.h"
 
 @interface AppDelegate ()
 
