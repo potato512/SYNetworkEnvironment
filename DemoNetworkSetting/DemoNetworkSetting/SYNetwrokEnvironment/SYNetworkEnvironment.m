@@ -132,7 +132,9 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 - (void)setDefaultNetwork
 {
     NSString *networkName = [self getDefaultNetworkName];
-    NSArray *nameArray = self.environmentDict.allKeys;
+    // bug-网络名称设置异常 修复 modify zhangshaoyu 20170422
+//    NSArray *nameArray = self.environmentDict.allKeys;
+    NSArray *nameArray = self.networkDict.allKeys;
     
     for (NSString *name in nameArray)
     {

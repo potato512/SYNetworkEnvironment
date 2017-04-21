@@ -81,6 +81,9 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
+## 20170422
+* SYNetworkEnvironment修复bug
+
 ## 20170414
  * 1、修改环境依赖，剔除plist文件；
  * 2、修改样式属性统一title开头；
