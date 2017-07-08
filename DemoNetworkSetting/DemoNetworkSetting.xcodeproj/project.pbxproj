@@ -17,6 +17,7 @@
 		A75752B71D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752B61D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m */; };
 		DFD5EDB51F114BC20094AB03 /* SYNetworkEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDB21F114BC20094AB03 /* SYNetworkEnvironment.m */; };
 		DFD5EDB61F114BC20094AB03 /* SYNetworkEnvironmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDB41F114BC20094AB03 /* SYNetworkEnvironmentView.m */; };
+		DFD5EDB91F11559E0094AB03 /* SYNetworkEnvironmentTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDB81F11559E0094AB03 /* SYNetworkEnvironmentTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		DFD5EDB21F114BC20094AB03 /* SYNetworkEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironment.m; sourceTree = "<group>"; };
 		DFD5EDB31F114BC20094AB03 /* SYNetworkEnvironmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentView.h; sourceTree = "<group>"; };
 		DFD5EDB41F114BC20094AB03 /* SYNetworkEnvironmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentView.m; sourceTree = "<group>"; };
+		DFD5EDB71F11559E0094AB03 /* SYNetworkEnvironmentTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentTable.h; sourceTree = "<group>"; };
+		DFD5EDB81F11559E0094AB03 /* SYNetworkEnvironmentTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				DFD5EDB21F114BC20094AB03 /* SYNetworkEnvironment.m */,
 				DFD5EDB31F114BC20094AB03 /* SYNetworkEnvironmentView.h */,
 				DFD5EDB41F114BC20094AB03 /* SYNetworkEnvironmentView.m */,
+				DFD5EDB71F11559E0094AB03 /* SYNetworkEnvironmentTable.h */,
+				DFD5EDB81F11559E0094AB03 /* SYNetworkEnvironmentTable.m */,
 			);
 			name = SYNetworkEnvironmentController;
 			path = ../../SYNetworkEnvironmentController;
@@ -293,6 +298,7 @@
 				DFD5EDB61F114BC20094AB03 /* SYNetworkEnvironmentView.m in Sources */,
 				DFD5EDB51F114BC20094AB03 /* SYNetworkEnvironment.m in Sources */,
 				A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */,
+				DFD5EDB91F11559E0094AB03 /* SYNetworkEnvironmentTable.m in Sources */,
 				A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */,
 				A75752931D6C1EB900D1DEC0 /* main.m in Sources */,
 			);
