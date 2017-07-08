@@ -25,26 +25,25 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     // 添加到视图控制器，退出APP
-//    [NetworkRequestEnvironment networkButtonWithNavigation:self exitApp:YES complete:^{
-//        
+//    [NetworkEnvironment environmentWithTarget:self exitApp:YES complete:^{
+//
 //    }];
-
+    
     // 添加到视图控制器，不退出APP
-    [NetworkRequestEnvironment networkButtonWithNavigation:self exitApp:NO complete:^{
-//        UIWindow *window = [[UIApplication sharedApplication].delegate window];
-//        window.rootViewController = [UIApplication sharedApplication].delegate
+    [NetworkEnvironment environmentWithTarget:self exitApp:NO complete:^{
         
         AppDelegate *appDelegate = ((AppDelegate *)[UIApplication sharedApplication].delegate);
         [appDelegate initRootViewController];
+        
     }];
     
     // 添加到视图指定位置
-    [NetworkRequestEnvironment networkButtonWithView:self.view frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO complete:^{
+    [NetworkEnvironment environmentWithTarget:self frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO complete:^{
         
     }];
     
     // 获取当前网络环境
-    NSString *url = NetworkRequestHost;
+    NSString *url = NetworkHost;
     NSLog(@"当前网络环境 url = %@", url);
 }
 
