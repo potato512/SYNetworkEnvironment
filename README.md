@@ -17,17 +17,13 @@
 {
     // Override point for customization after application launch.
 
-    // 标题按钮设置
-    NetworkRequestEnvironment.titleFont = [UIFont systemFontOfSize:13.0];
-    NetworkRequestEnvironment.titleColorNormal = [UIColor blackColor];
-    NetworkRequestEnvironment.titleColorHlight = [UIColor redColor];
     // 环境设置
-    NetworkRequestEnvironment.networkEnviroment = 0;
-    NetworkRequestEnvironment.networkServiceDebug = @"http://www.hao123.com";
-    NetworkRequestEnvironment.networkServiceRelease = @"http://www.baidu.com";
-    NetworkRequestEnvironment.networkServiceDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
+    NetworkEnvironment.environment = 0;
+    NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
+    NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
+    NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
     // 初始化
-    [NetworkRequestEnvironment initializeNetworkEnvironment];
+    [NetworkEnvironment initializeEnvironment];
 
     return YES;
 }
@@ -36,23 +32,19 @@
   * （1）添加到视图控制器，便于显示交互视图。如果网络环境的keyNetworkEnvironment值为1，则在对应视图控制器的导航栏右按钮位置显示交互按钮；如果值为0，则不显示，但可以在对应视图控制器的导航栏右按钮位置通过连续点击5次显示交互选择视图。
 ~~~ javascript
 // 退出，或不退出APP
-[NetworkRequestEnvironment networkButtonWithNavigation:self exitApp:NO complete:^{
-    // UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    // window.rootViewController = [UIApplication sharedApplication].delegate
+[NetworkEnvironment environmentWithTarget:self exitApp:NO complete:^{
 
-    AppDelegate *appDelegate = ((AppDelegate *)[UIApplication sharedApplication].delegate);
-    [appDelegate initRootViewController];
 }];
 ~~~
   * （2）添加到指定视图的指定位置
 ~~~ javascript
-[NetworkRequestEnvironment networkButtonWithView:self.view frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO complete:^{
+[NetworkEnvironment environmentWithTarget:self frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO complete:^{
 
 }];
 ~~~
   * （3）获取定义的网络环境，如：
 ~~~ javascript
-NSString *url = NetworkRequestHost;
+NSString *url = NetworkHost;
 NSLog(@"url = %@", url);
 ~~~
 
@@ -60,7 +52,7 @@ NSLog(@"url = %@", url);
   * （1）网络环境初始化
    * a）开发环境，还是线上环境
    * b）环境地址
-   * c）初始化initializeNetworkEnvironment
+   * c）初始化initializeEnvironment
   * （2）网络环境设置的交互视图显示在用户自定义的视图控制器中，或在视图中
 
 
