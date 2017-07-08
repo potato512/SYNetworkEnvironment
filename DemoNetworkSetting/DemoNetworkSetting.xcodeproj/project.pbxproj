@@ -16,7 +16,8 @@
 		A75752AC1D6C1EB900D1DEC0 /* DemoNetworkSettingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752AB1D6C1EB900D1DEC0 /* DemoNetworkSettingTests.m */; };
 		A75752B71D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752B61D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m */; };
 		DFD5EDA81F1127A90094AB03 /* SYNetworkEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDA51F1127A90094AB03 /* SYNetworkEnvironment.m */; };
-		DFD5EDA91F1127A90094AB03 /* SYNetworkEnvironmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDA71F1127A90094AB03 /* SYNetworkEnvironmentView.m */; };
+		DFD5EDAC1F1128A90094AB03 /* SYNetworkEnvironmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDAB1F1128A90094AB03 /* SYNetworkEnvironmentController.m */; };
+		DFD5EDAF1F112BFB0094AB03 /* SYNetworkEnvironmentTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5EDAE1F112BFB0094AB03 /* SYNetworkEnvironmentTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,10 @@
 		A75752B81D6C1EB900D1DEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD5EDA41F1127A90094AB03 /* SYNetworkEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironment.h; sourceTree = "<group>"; };
 		DFD5EDA51F1127A90094AB03 /* SYNetworkEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironment.m; sourceTree = "<group>"; };
-		DFD5EDA61F1127A90094AB03 /* SYNetworkEnvironmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentView.h; sourceTree = "<group>"; };
-		DFD5EDA71F1127A90094AB03 /* SYNetworkEnvironmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentView.m; sourceTree = "<group>"; };
+		DFD5EDAA1F1128A90094AB03 /* SYNetworkEnvironmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentController.h; sourceTree = "<group>"; };
+		DFD5EDAB1F1128A90094AB03 /* SYNetworkEnvironmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentController.m; sourceTree = "<group>"; };
+		DFD5EDAD1F112BFB0094AB03 /* SYNetworkEnvironmentTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentTable.h; sourceTree = "<group>"; };
+		DFD5EDAE1F112BFB0094AB03 /* SYNetworkEnvironmentTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +155,10 @@
 			children = (
 				DFD5EDA41F1127A90094AB03 /* SYNetworkEnvironment.h */,
 				DFD5EDA51F1127A90094AB03 /* SYNetworkEnvironment.m */,
-				DFD5EDA61F1127A90094AB03 /* SYNetworkEnvironmentView.h */,
-				DFD5EDA71F1127A90094AB03 /* SYNetworkEnvironmentView.m */,
+				DFD5EDAA1F1128A90094AB03 /* SYNetworkEnvironmentController.h */,
+				DFD5EDAB1F1128A90094AB03 /* SYNetworkEnvironmentController.m */,
+				DFD5EDAD1F112BFB0094AB03 /* SYNetworkEnvironmentTable.h */,
+				DFD5EDAE1F112BFB0094AB03 /* SYNetworkEnvironmentTable.m */,
 			);
 			name = SYNetworkEnvironmentController;
 			path = ../../SYNetworkEnvironmentController;
@@ -290,8 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFD5EDA91F1127A90094AB03 /* SYNetworkEnvironmentView.m in Sources */,
 				DFD5EDA81F1127A90094AB03 /* SYNetworkEnvironment.m in Sources */,
+				DFD5EDAF1F112BFB0094AB03 /* SYNetworkEnvironmentTable.m in Sources */,
+				DFD5EDAC1F1128A90094AB03 /* SYNetworkEnvironmentController.m in Sources */,
 				A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */,
 				A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */,
 				A75752931D6C1EB900D1DEC0 /* main.m in Sources */,
