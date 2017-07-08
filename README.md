@@ -81,6 +81,9 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
+## 20170708
+* 修改成present Controller的样式
+
 ## 20170422
 * SYNetworkEnvironment修复bug
 
