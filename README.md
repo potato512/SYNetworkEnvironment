@@ -65,7 +65,7 @@ NSLog(@"url = %@", url);
 ![2.png](./images/2.png)
 ## 使用
 
-![2.png](./images/3.png)
+![3.png](./images/3.png)
 
 # 设计原理
 
