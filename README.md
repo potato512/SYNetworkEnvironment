@@ -73,15 +73,23 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
-## 20170708
-* 修改成present Controller的样式
+* 20171024
+  * 版本号：1.2.0
+  * 添加手动配置地址功能
 
-## 20170422
-* SYNetworkEnvironment修复bug
+* 20170708
+  * 版本号：1.0.1
+  * 修改成present Controller的样式
 
-## 20170414
- * 1、修改环境依赖，剔除plist文件；
- * 2、修改样式属性统一title开头；
+* 20170422
+  * 版本号：1.0.1
+  * SYNetworkEnvironment修复bug
+
+* 20170414
+  * 版本号：1.0.0
+  * 功能修改：
+    * 修改环境依赖，剔除plist文件；
+    * 修改样式属性统一title开头；
 
 
 

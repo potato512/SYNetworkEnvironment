@@ -12,7 +12,6 @@
 /************************************************************************/
 
 static NSString *const keyNetwork = @"SYNetworkSettingHost";
-#define NetworkUserDefault [NSUserDefaults standardUserDefaults]
 
 /************************************************************************/
 
@@ -82,6 +81,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 - (void)readConfigNetwork
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    // 初始化APP时的配置
     for (NSString *key in self.environmentDict.allKeys)
     {
         if ([key isEqualToString:keyNetworkEnvironment])
@@ -92,12 +92,12 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
         }
         else if ([key isEqualToString:keyNetworkEnvironmentDevelop])
         {
-            self.developName = @"默认开发测试环境";
+            self.developName = kNameDelelop;
             self.developUrl = [self.environmentDict objectForKey:key];
         }
         else if ([key isEqualToString:keyNetworkEnvironmentPublic])
         {
-            self.publicName = @"默认发布环境";
+            self.publicName = kNamePublish;
             self.publicUrl = [self.environmentDict objectForKey:key];
         }
         else
@@ -109,8 +109,17 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
             }
         }
     }
+    // 开发和发布配置
     [dict setValue:self.publicUrl forKey:self.publicName];
     [dict setValue:self.developUrl forKey:self.developName];
+    // 手动添加的地址配置
+    NSDictionary *dictAdd = [[NSUserDefaults standardUserDefaults] objectForKey:kAddNetworkAddress];
+    for (NSString *key in dictAdd.allKeys)
+    {
+        NSString *value = [dictAdd objectForKey:key];
+        [dict setValue:value forKey:key];
+    }
+    //
     self.networkDict = [NSDictionary dictionaryWithDictionary:dict];
     
     NSAssert(self.publicName != nil, @"self.publicName must be not nil");
@@ -146,7 +155,12 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 {
     // 默认开发测试环境
     NSString *networkName = [NetworkUserDefault objectForKey:keyNetwork];
-    
+    if (![self.networkDict.allKeys containsObject:networkName])
+    {
+        // 手动配置的地址被删除后，默认使用开发环境
+        networkName = nil;
+    }
+
     if (1 == self.isPublicNetworkEnvironment)
     {
         // 发布环境

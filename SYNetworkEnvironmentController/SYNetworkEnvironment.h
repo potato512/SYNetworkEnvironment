@@ -12,6 +12,12 @@
 
 /************************************************************************/
 
+static NSString *const kNameDelelop = @"默认开发测试环境";
+static NSString *const kNamePublish = @"默认发布环境";
+
+static NSString *const kAddNetworkAddress = @"ManualAddNetworkAddress";
+#define NetworkUserDefault [NSUserDefaults standardUserDefaults]
+
 #define NetworkEnvironment ([SYNetworkEnvironment shareEnvironment])
 #define NetworkHost        ([[SYNetworkEnvironment shareEnvironment] getDefaultNetworkHost])
 

@@ -10,7 +10,6 @@
 
 @interface SYNetworkEnvironmentTable () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *environmentNames;
 @property (nonatomic, strong) NSIndexPath *previousIndex;
 
 @end
@@ -33,31 +32,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.environmentNames.count;
+    return self.environmentURLs.allKeys.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *reuseCell = @"UITableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseCell];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseCell];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
+    
         cell.detailTextLabel.font = [UIFont systemFontOfSize:10.0];
         // 字体颜色
         cell.textLabel.textColor = [UIColor blackColor];
         cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     }
     
-    NSString *name = self.environmentNames[indexPath.row];
+    NSString *name = self.environmentURLs.allKeys[indexPath.row];
     cell.textLabel.text = name;
     NSString *url = [self.environmentURLs objectForKey:name];
     cell.detailTextLabel.text = url;
     // 字体颜色
     cell.textLabel.textColor = [UIColor blackColor];
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     if ([self.environmentName isEqualToString:name])
     {
@@ -79,7 +77,7 @@
     // 当前选择回调
     if (self.environmentSelected)
     {
-        NSString *name = self.environmentNames[indexPath.row];
+        NSString *name = self.environmentURLs.allKeys[indexPath.row];
         self.environmentSelected(name);
     }
     
@@ -101,15 +99,6 @@
     cellSelected.detailTextLabel.textColor = [UIColor blueColor];
     
     self.previousIndex = indexPath;
-}
-
-- (NSArray *)environmentNames
-{
-    if (_environmentNames == nil)
-    {
-        _environmentNames = self.environmentURLs.allKeys;
-    }
-    return _environmentNames;
 }
 
 @end
