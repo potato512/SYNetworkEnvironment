@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A70C2EC11F9EDB2400F428DD /* SYNetworkEnvironmentAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = A70C2EC01F9EDB2400F428DD /* SYNetworkEnvironmentAddView.m */; };
 		A75752931D6C1EB900D1DEC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752921D6C1EB900D1DEC0 /* main.m */; };
 		A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752951D6C1EB900D1DEC0 /* AppDelegate.m */; };
 		A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752981D6C1EB900D1DEC0 /* ViewController.m */; };
@@ -39,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A70C2EBF1F9EDB2400F428DD /* SYNetworkEnvironmentAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentAddView.h; sourceTree = "<group>"; };
-		A70C2EC01F9EDB2400F428DD /* SYNetworkEnvironmentAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentAddView.m; sourceTree = "<group>"; };
 		A757528E1D6C1EB900D1DEC0 /* DemoNetworkSetting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoNetworkSetting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75752921D6C1EB900D1DEC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A75752941D6C1EB900D1DEC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,8 +159,6 @@
 				DFD5EDBB1F1156D20094AB03 /* SYNetworkEnvironmentController.m */,
 				DFD5EDB71F11559E0094AB03 /* SYNetworkEnvironmentTable.h */,
 				DFD5EDB81F11559E0094AB03 /* SYNetworkEnvironmentTable.m */,
-				A70C2EBF1F9EDB2400F428DD /* SYNetworkEnvironmentAddView.h */,
-				A70C2EC01F9EDB2400F428DD /* SYNetworkEnvironmentAddView.m */,
 			);
 			name = SYNetworkEnvironmentController;
 			path = ../../SYNetworkEnvironmentController;
@@ -302,7 +297,6 @@
 			files = (
 				DFD5EDB51F114BC20094AB03 /* SYNetworkEnvironment.m in Sources */,
 				A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */,
-				A70C2EC11F9EDB2400F428DD /* SYNetworkEnvironmentAddView.m in Sources */,
 				DFD5EDB91F11559E0094AB03 /* SYNetworkEnvironmentTable.m in Sources */,
 				A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */,
 				DFD5EDBC1F1156D20094AB03 /* SYNetworkEnvironmentController.m in Sources */,
