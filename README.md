@@ -18,7 +18,7 @@
     // Override point for customization after application launch.
 
     // 环境设置
-    NetworkEnvironment.environment = 0;
+    NetworkEnvironment.environmentHost = @"0";
     NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
     NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
     NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
@@ -73,6 +73,15 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
+* 20180117
+  * 版本号：1.2.1
+  * 环境属性修改
+
+```
+/// 网络环境（0为测试环境；1为线上环境）
+@property (nonatomic, strong) NSString *environmentHost;
+```
+
 * 20171024
   * 版本号：1.2.0
   * 添加手动配置地址功能

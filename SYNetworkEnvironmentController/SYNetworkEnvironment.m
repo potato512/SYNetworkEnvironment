@@ -350,10 +350,9 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 #pragma mark - setter
 
-- (void)setEnviroment:(BOOL)enviroment
+- (void)setEnvironmentHost:(NSString *)environmentHost
 {
-    NSNumber *number = @(enviroment);
-    [self.environmentDict setObject:number forKey:keyNetworkEnvironment];
+    [self.environmentDict setObject:environmentHost forKey:keyNetworkEnvironment];
 }
 
 - (void)setEnvironmentHostDebug:(NSString *)environmentHostDebug

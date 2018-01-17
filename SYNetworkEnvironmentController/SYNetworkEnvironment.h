@@ -27,7 +27,7 @@ static NSString *const kAddNetworkAddress = @"ManualAddNetworkAddress";
 @interface SYNetworkEnvironment : NSObject
 
 /// 网络环境（0为测试环境；1为线上环境）
-@property (nonatomic, assign) BOOL environment;
+@property (nonatomic, strong) NSString *environmentHost;
 /// 测试环境地址（默认地址）
 @property (nonatomic, strong) NSString *environmentHostDebug;
 /// 线上环境地址（线上地址）
@@ -77,7 +77,6 @@ static NSString *const kAddNetworkAddress = @"ManualAddNetworkAddress";
  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
  {
      // Override point for customization after application launch.
-     
     
      // 环境设置
      NetworkEnvironment.environment = 0;
@@ -85,8 +84,7 @@ static NSString *const kAddNetworkAddress = @"ManualAddNetworkAddress";
      NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
      NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
      // 初始化
-     [NetworkEnvironment initializeEnvironment];
- 
+     [NetworkEnvironment initializeEnvironment]; 
  
      return YES;
  }

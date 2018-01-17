@@ -23,7 +23,7 @@
     
     
     // 环境设置
-    NetworkEnvironment.environment = 0;
+    NetworkEnvironment.environmentHost = @"0";
     NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
     NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
     NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
