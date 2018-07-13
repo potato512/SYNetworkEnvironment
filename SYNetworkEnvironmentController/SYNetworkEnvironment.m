@@ -323,10 +323,12 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
         }
         
         NSLog(@"设置后：(%@)%@", [NetworkEnvironment getDefaultNetworkName], NetworkHost);
-    };
-    environmentVC.environmentDismiss = ^(){
+        
         // 退出重启，或重新连接
         [weakSelf exitApplication];
+    };
+    environmentVC.environmentDismiss = ^(){
+        
     };
     UINavigationController *environmentNav = [[UINavigationController alloc] initWithRootViewController:environmentVC];
     [self.controller presentViewController:environmentNav animated:YES completion:NULL];
