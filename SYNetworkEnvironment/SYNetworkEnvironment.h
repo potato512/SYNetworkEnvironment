@@ -49,7 +49,6 @@ static NSString *const kAddNetworkAddress = @"ManualAddNetworkAddress";
  *  @param targer          添加设置控制网络环境按钮的视图控制器（即设置成该视图控制器的导航栏右按钮）
  *  @param isExit          是否退出当前APP
  *  @param complete        设置完成的后回调处理（如：退出登录，或退出APP，或回到根视图控制器并重新刷新网络）
- *  @return void
  */
 - (void)environmentWithTarget:(UIViewController *)targer exitApp:(BOOL)isExit complete:(void (^)(void))complete;
 
