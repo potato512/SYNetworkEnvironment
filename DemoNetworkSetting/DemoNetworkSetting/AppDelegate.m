@@ -20,10 +20,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+<<<<<<< HEAD
     
     
     // 环境设置
     NetworkEnvironment.environmentHost = @"0";
+=======
+
+    // 环境设置
+    NetworkEnvironment.environment = 0;
+>>>>>>> atHome
     NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
     NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
     NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};

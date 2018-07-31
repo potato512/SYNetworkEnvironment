@@ -15,9 +15,12 @@
 		A75752A11D6C1EB900D1DEC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A757529F1D6C1EB900D1DEC0 /* LaunchScreen.storyboard */; };
 		A75752AC1D6C1EB900D1DEC0 /* DemoNetworkSettingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752AB1D6C1EB900D1DEC0 /* DemoNetworkSettingTests.m */; };
 		A75752B71D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75752B61D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m */; };
+<<<<<<< HEAD
 		A77A1283210F219A00376B4D /* SYNetworkEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A77A127E210F219A00376B4D /* SYNetworkEnvironment.m */; };
 		A77A1284210F219A00376B4D /* SYNetworkEnvironmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = A77A1280210F219A00376B4D /* SYNetworkEnvironmentController.m */; };
 		A77A1285210F219A00376B4D /* SYNetworkEnvironmentTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A77A1282210F219A00376B4D /* SYNetworkEnvironmentTable.m */; };
+=======
+>>>>>>> atHome
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,12 +57,15 @@
 		A75752B21D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoNetworkSettingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75752B61D6C1EB900D1DEC0 /* DemoNetworkSettingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNetworkSettingUITests.m; sourceTree = "<group>"; };
 		A75752B81D6C1EB900D1DEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		A77A127D210F219A00376B4D /* SYNetworkEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironment.h; sourceTree = "<group>"; };
 		A77A127E210F219A00376B4D /* SYNetworkEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironment.m; sourceTree = "<group>"; };
 		A77A127F210F219A00376B4D /* SYNetworkEnvironmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentController.h; sourceTree = "<group>"; };
 		A77A1280210F219A00376B4D /* SYNetworkEnvironmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentController.m; sourceTree = "<group>"; };
 		A77A1281210F219A00376B4D /* SYNetworkEnvironmentTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNetworkEnvironmentTable.h; sourceTree = "<group>"; };
 		A77A1282210F219A00376B4D /* SYNetworkEnvironmentTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNetworkEnvironmentTable.m; sourceTree = "<group>"; };
+=======
+>>>>>>> atHome
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +120,10 @@
 				A75752951D6C1EB900D1DEC0 /* AppDelegate.m */,
 				A75752971D6C1EB900D1DEC0 /* ViewController.h */,
 				A75752981D6C1EB900D1DEC0 /* ViewController.m */,
+<<<<<<< HEAD
 				A77A127C210F219A00376B4D /* SYNetworkEnvironment */,
+=======
+>>>>>>> atHome
 				A75752911D6C1EB900D1DEC0 /* Supporting Files */,
 			);
 			path = DemoNetworkSetting;
@@ -150,6 +159,7 @@
 			path = DemoNetworkSettingUITests;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		A77A127C210F219A00376B4D /* SYNetworkEnvironment */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,8 @@
 			path = ../../SYNetworkEnvironment;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> atHome
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,8 +307,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				A77A1284210F219A00376B4D /* SYNetworkEnvironmentController.m in Sources */,
 				A77A1283210F219A00376B4D /* SYNetworkEnvironment.m in Sources */,
+=======
+>>>>>>> atHome
 				A75752991D6C1EB900D1DEC0 /* ViewController.m in Sources */,
 				A77A1285210F219A00376B4D /* SYNetworkEnvironmentTable.m in Sources */,
 				A75752961D6C1EB900D1DEC0 /* AppDelegate.m in Sources */,

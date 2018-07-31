@@ -26,12 +26,20 @@
     
     // 添加到视图控制器，退出APP
 //    [NetworkEnvironment environmentWithTarget:self exitApp:YES complete:^{
+<<<<<<< HEAD
 //
+=======
+//        
+>>>>>>> atHome
 //    }];
     
     // 添加到视图控制器，不退出APP
     [NetworkEnvironment environmentWithTarget:self exitApp:NO complete:^{
+<<<<<<< HEAD
         
+=======
+     
+>>>>>>> atHome
         AppDelegate *appDelegate = ((AppDelegate *)[UIApplication sharedApplication].delegate);
         [appDelegate initRootViewController];
         
