@@ -71,8 +71,7 @@
 {
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-    {
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 }
@@ -86,18 +85,15 @@
 
 - (void)buttonCancle
 {
-    if (self.isDeleteAdd)
-    {
+    if (self.isDeleteAdd) {
         self.isDeleteAdd = NO;
-        if (self.environmentSelected && self.selectedName)
-        {
+        if (self.environmentSelected && self.selectedName) {
             self.environmentSelected(self.selectedName);
         }
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
-        if (self.environmentDismiss)
-        {
+        if (self.environmentDismiss) {
             self.environmentDismiss();
         }
     }];
@@ -106,14 +102,12 @@
 - (void)buttonConfirm
 {
     // 保存
-    if (self.environmentSelected && self.selectedName)
-    {
+    if (self.environmentSelected && self.selectedName) {
         self.environmentSelected(self.selectedName);
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
-        if (self.environmentDismiss)
-        {
+        if (self.environmentDismiss) {
             self.environmentDismiss();
         }
     }];
@@ -122,8 +116,7 @@
 - (void)addAddress:(UISegmentedControl *)segment
 {
     NSInteger index = segment.selectedSegmentIndex;
-    if (0 == index)
-    {
+    if (0 == index) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"添加地址" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.tag = 1000;
         alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
@@ -135,9 +128,7 @@
         valueTextField.secureTextEntry = NO;
         valueTextField.placeholder = @"https:// 或 http:// 开头的网络地址";
         [alertView show];
-    }
-    else if (1 == index)
-    {
+    } else if (1 == index) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"删除地址" message:@"确定删除手动添加地址？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.tag = 1001;
         [alertView show];
@@ -149,10 +140,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if ([title isEqualToString:@"确定"])
-    {
-        if (1000 == alertView.tag)
-        {
+    if ([title isEqualToString:@"确定"]) {
+        if (1000 == alertView.tag) {
             // 第一个输入框
             UITextField *nameField = [alertView textFieldAtIndex:0];
             NSString *name = nameField.text;
@@ -163,13 +152,13 @@
             NSString *value = valueTextField.text;
             NSLog(@"value = %@",value);
             
-            if ((name && 0 < name.length) && ((value && 0 < value.length && ([value hasPrefix:@"http://"] || [value hasPrefix:@"https://"]))))
-            {
+            BOOL isValidName = (name && 0 < name.length);
+            BOOL isValidValue = ((value && 0 < value.length && ([value hasPrefix:@"http://"] || [value hasPrefix:@"https://"])));
+            if (isValidName && isValidValue) {
                 //
                 NSDictionary *dictTmp = [NetworkUserDefault objectForKey:kAddNetworkAddress];
                 NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dictTmp];
-                if (dict == nil)
-                {
+                if (dict == nil) {
                     dict = [[NSMutableDictionary alloc] init];
                 }
                 [dict setValue:value forKey:name];
@@ -177,8 +166,7 @@
                 [NetworkUserDefault synchronize];
                 
                 // 属性设置
-                for (NSString *key in self.environmentURLs.allKeys)
-                {
+                for (NSString *key in self.environmentURLs.allKeys) {
                     NSString *value = [self.environmentURLs objectForKey:key];
                     [dict setValue:value forKey:key];
                 }
@@ -189,22 +177,17 @@
                 self.environmentTable.environmentURLs = self.environmentURLs;
                 [self.environmentTable reloadData];
             }
-        }
-        else if (1001 == alertView.tag)
-        {
+        } else if (1001 == alertView.tag) {
             //
             NSDictionary *dictTmp = [NetworkUserDefault objectForKey:kAddNetworkAddress];
-            if (dictTmp)
-            {
-                if ([dictTmp.allKeys containsObject:self.environmentName])
-                {
+            if (dictTmp) {
+                if ([dictTmp.allKeys containsObject:self.environmentName]) {
                     self.environmentName = kNameDelelop;
                     self.selectedName = kNameDelelop;
                 }
                 
                 NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.environmentURLs];
-                for (NSString *key in dictTmp.allKeys)
-                {
+                for (NSString *key in dictTmp.allKeys) {
                     [dict removeObjectForKey:key];
                 }
                 self.environmentURLs = dict;

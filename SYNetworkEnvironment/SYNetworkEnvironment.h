@@ -38,7 +38,7 @@ static NSString *const kAddNetworkAddress = @"ManualAddNetworkAddress";
 
 + (SYNetworkEnvironment *)shareEnvironment;
 
-/// 初始化网络环境（注意：发布时环境状态为1）
+/// 初始化网络环境（注意：发布时环境状态environmentHost为1）
 - (void)initializeEnvironment;
 
 /// 获取开发网络环境地址

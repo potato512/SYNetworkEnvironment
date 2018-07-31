@@ -19,13 +19,13 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     self = [super initWithFrame:frame style:style];
-    if (self)
-    {
+    if (self) {
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.tableFooterView = [UIView new];
         
         self.delegate = self;
         self.dataSource = self;
+        
+        self.tableFooterView = [UIView new];
     }
     return self;
 }
@@ -38,8 +38,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    if (cell == nil)
-    {
+    if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
     
         cell.detailTextLabel.font = [UIFont systemFontOfSize:10.0];
@@ -57,8 +56,7 @@
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    if ([self.environmentName isEqualToString:name])
-    {
+    if ([self.environmentName isEqualToString:name]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         // 字体高亮颜色
         cell.textLabel.textColor = [UIColor blueColor];
@@ -75,15 +73,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // 当前选择回调
-    if (self.environmentSelected)
-    {
+    if (self.environmentSelected) {
         NSString *name = self.environmentURLs.allKeys[indexPath.row];
         self.environmentSelected(name);
     }
     
     // 选择操作
-    if (self.previousIndex)
-    {
+    if (self.previousIndex) {
         UITableViewCell *cellPrevious = [tableView cellForRowAtIndexPath:self.previousIndex];
         cellPrevious.accessoryType = UITableViewCellAccessoryNone;
         

@@ -13,8 +13,6 @@
 
 static NSString *const keyNetwork = @"SYNetworkSettingHost";
 
-/************************************************************************/
-
 static NSString *const keyNetworkEnvironment        = @"keyNetworkEnvironment";
 static NSString *const keyNetworkEnvironmentPublic  = @"keyNetworkEnvironmentPublic";
 static NSString *const keyNetworkEnvironmentDevelop = @"keyNetworkEnvironmentDevelop";
@@ -43,16 +41,14 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 @implementation SYNetworkEnvironment
 
-/************************************************************************/
+#pragma mark - 初始化
 
 - (instancetype)init
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
 
     }
-    
     return self;
 }
 
@@ -72,39 +68,29 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 - (void)initializeEnvironment;
 {
     [self readConfigNetwork];
-    
     [self setDefaultNetwork];
 }
 
-/************************************************************************/
+#pragma mark - method
 
 - (void)readConfigNetwork
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     // 初始化APP时的配置
-    for (NSString *key in self.environmentDict.allKeys)
-    {
-        if ([key isEqualToString:keyNetworkEnvironment])
-        {
+    for (NSString *key in self.environmentDict.allKeys) {
+        if ([key isEqualToString:keyNetworkEnvironment]) {
             // 网络环境
             NSString *value = [self.environmentDict objectForKey:key];
             self.isPublicNetworkEnvironment = value.integerValue;
-        }
-        else if ([key isEqualToString:keyNetworkEnvironmentDevelop])
-        {
+        } else if ([key isEqualToString:keyNetworkEnvironmentDevelop]) {
             self.developName = kNameDelelop;
             self.developUrl = [self.environmentDict objectForKey:key];
-        }
-        else if ([key isEqualToString:keyNetworkEnvironmentPublic])
-        {
+        } else if ([key isEqualToString:keyNetworkEnvironmentPublic]) {
             self.publicName = kNamePublish;
             self.publicUrl = [self.environmentDict objectForKey:key];
-        }
-        else
-        {
+        } else {
             NSDictionary *dictTmp = [self.environmentDict objectForKey:key];
-            if (dictTmp && 0 != dictTmp.count)
-            {
+            if (dictTmp && 0 != dictTmp.count) {
                 [dict setDictionary:dictTmp];
             }
         }
@@ -114,8 +100,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     [dict setValue:self.developUrl forKey:self.developName];
     // 手动添加的地址配置
     NSDictionary *dictAdd = [[NSUserDefaults standardUserDefaults] objectForKey:kAddNetworkAddress];
-    for (NSString *key in dictAdd.allKeys)
-    {
+    for (NSString *key in dictAdd.allKeys) {
         NSString *value = [dictAdd objectForKey:key];
         [dict setValue:value forKey:key];
     }
@@ -129,7 +114,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     NSAssert(self.environmentDict != nil, @"self.networkDict must be not nil");
 }
 
-/************************************************************************/
+#pragma mark - 网络环境设置
 
 // 设置初始化网络环境
 - (void)setDefaultNetwork
@@ -139,46 +124,53 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 //    NSArray *nameArray = self.environmentDict.allKeys;
     NSArray *nameArray = self.networkDict.allKeys;
     
-    for (NSString *name in nameArray)
-    {
-        if ([name isEqualToString:networkName])
-        {
+    for (NSString *name in nameArray) {
+        if ([name isEqualToString:networkName]) {
             [self setDefaultNetwork:name];
-            
             break;
         }
     }
 }
+
+// 获取开发网络环境地址
+- (NSString *)getDefaultNetworkHost
+{
+    NSString *networkUrl = nil;
+    NSString *networkName = [NetworkUserDefault objectForKey:keyNetwork];
+    NSArray *nameArray = self.networkDict.allKeys;
+    
+    for (NSString *name in nameArray) {
+        if ([name isEqualToString:networkName]) {
+            networkUrl = [self.networkDict objectForKey:name];
+            break;
+        }
+    }
+    return networkUrl;
+}
+
+#pragma mark - 网络环境名称
 
 // 获取网络环境名称
 - (NSString *)getDefaultNetworkName
 {
     // 默认开发测试环境
     NSString *networkName = [NetworkUserDefault objectForKey:keyNetwork];
-    if (![self.networkDict.allKeys containsObject:networkName])
-    {
+    if (![self.networkDict.allKeys containsObject:networkName]) {
         // 手动配置的地址被删除后，默认使用开发环境
         networkName = nil;
     }
 
-    if (1 == self.isPublicNetworkEnvironment)
-    {
+    if (1 == self.isPublicNetworkEnvironment) {
         // 发布环境
-        if (networkName && 0 != networkName.length)
-        {
+        if (networkName && 0 != networkName.length) {
             // 如果是发布环境，且设置了网络环境，则使用设置的网络环境
-        }
-        else
-        {
+        } else {
             // 如果没有重新设置网络环境，则默认使用发布环境
             networkName = self.publicName;
         }
-    }
-    else
-    {
+    } else {
         // 非发布环境
-        if (!networkName || 0 == networkName.length)
-        {
+        if (!networkName || 0 == networkName.length) {
             // 如果没有初始化值，默认开发环境
             networkName = self.developName;
         }
@@ -187,40 +179,14 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     return networkName;
 }
 
-/************************************************************************/
-
 // 设置网络环境名称
 - (void)setDefaultNetwork:(NSString *)name
 {
-    if (name && 0 != name.length)
-    {
+    if (name && 0 != name.length) {
         [NetworkUserDefault setObject:name forKey:keyNetwork];
         [NetworkUserDefault synchronize];
     }
 }
-
-// 获取开发网络环境地址
-- (NSString *)getDefaultNetworkHost
-{
-    NSString *networkUrl = nil;
-    
-    NSString *networkName = [NetworkUserDefault objectForKey:keyNetwork];
-    NSArray *nameArray = self.networkDict.allKeys;
-    
-    for (NSString *name in nameArray)
-    {
-        if ([name isEqualToString:networkName])
-        {
-            networkUrl = [self.networkDict objectForKey:name];
-            
-            break;
-        }
-    }
-    
-    return networkUrl;
-}
-
-/************************************************************************/
 
 #pragma mark 设置方法
 
@@ -229,8 +195,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 {
     self.isExitApp = isExit;
     
-    if (complete)
-    {
+    if (complete) {
         self.completeBlock = [complete copy];
     }
     
@@ -241,22 +206,18 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     button.titleLabel.font = [UIFont systemFontOfSize:13.0];
     
-    if (1 == self.isPublicNetworkEnvironment)
-    {
+    if (1 == self.isPublicNetworkEnvironment) {
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(networkClick:)];
         tapRecognizer.numberOfTapsRequired = 5;
         [button addGestureRecognizer:tapRecognizer];
-    }
-    else
-    {
+    } else {
         NSString *name = [self getDefaultNetworkName];
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
         [button setTitle:name forState:UIControlStateNormal];
         [button addTarget:self action:@selector(networkClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    if (target)
-    {
+    if (target) {
         self.controller = target;
         target.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -266,8 +227,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 {
     self.isExitApp = isExit;
     
-    if (complete)
-    {
+    if (complete) {
         self.completeBlock = [complete copy];
     }
     
@@ -277,22 +237,18 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
     [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     button.titleLabel.font = [UIFont systemFontOfSize:13.0];
     
-    if (1 == self.isPublicNetworkEnvironment)
-    {
+    if (1 == self.isPublicNetworkEnvironment) {
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(networkClick:)];
         tapRecognizer.numberOfTapsRequired = 5;
         [button addGestureRecognizer:tapRecognizer];
-    }
-    else
-    {
+    } else {
         NSString *name = [self getDefaultNetworkName];
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
         [button setTitle:name forState:UIControlStateNormal];
         [button addTarget:self action:@selector(networkClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    if (targer)
-    {
+    if (targer) {
         self.controller = targer;
         
         [targer.view addSubview:button];
@@ -317,8 +273,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
         // 保存选择环境
         [weakSelf setDefaultNetwork:name];
         
-        if ([sender isKindOfClass:[UIButton class]])
-        {
+        if ([sender isKindOfClass:[UIButton class]]) {
             [sender setTitle:name forState:UIControlStateNormal];
         }
         
@@ -336,19 +291,15 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 - (void)exitApplication
 {
-    if (self.completeBlock)
-    {
+    if (self.completeBlock) {
         self.completeBlock();
     }
     
-    if (self.isExitApp)
-    {
+    if (self.isExitApp) {
         // 退出APP
         exit(0);
     }
 }
-
-/************************************************************************/
 
 #pragma mark - setter
 
@@ -374,8 +325,7 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 - (NSMutableDictionary *)environmentDict
 {
-    if (_environmentDict == nil)
-    {
+    if (_environmentDict == nil) {
         _environmentDict = [NSMutableDictionary dictionary];
     }
     return _environmentDict;
