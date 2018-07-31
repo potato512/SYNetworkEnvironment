@@ -6,29 +6,39 @@
 ![networkSetting.gif](./images/networkSetting.gif)
 
 # 网络环境配置组件的使用
- * 1、导入 SYNetworkEnvironment 相关类文件
- * 2、导入头文件，如：
+* 1、导入 SYNetworkEnvironment 相关类文件
+* 2、导入头文件，如：
 ~~~ javascript
 #import "SYNetworkEnvironment.h"
 ~~~ 
- * 3、初始化网络环境，即在方法"- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}"中进行初始化。如：
+* 3、初始化网络环境，即在方法"- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}"中进行初始化。如：
 ~~~ javascript
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
 
+<<<<<<< HEAD
     // 环境设置
     NetworkEnvironment.environmentHost = @"0";
+=======
+
+    // 环境设置
+    NetworkEnvironment.environment = 0;
+>>>>>>> atHome
     NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
     NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
     NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
     // 初始化
     [NetworkEnvironment initializeEnvironment];
+<<<<<<< HEAD
+=======
+
+>>>>>>> atHome
 
     return YES;
 }
 ~~~
- * 4、使用
+* 4、使用
   * （1）添加到视图控制器，便于显示交互视图。如果网络环境的keyNetworkEnvironment值为1，则在对应视图控制器的导航栏右按钮位置显示交互按钮；如果值为0，则不显示，但可以在对应视图控制器的导航栏右按钮位置通过连续点击5次显示交互选择视图。
 ~~~ javascript
 // 退出，或不退出APP
@@ -48,7 +58,7 @@ NSString *url = NetworkHost;
 NSLog(@"url = %@", url);
 ~~~
 
- * 5、注意事项
+5、注意事项
   * （1）网络环境初始化
    * a）开发环境，还是线上环境
    * b）环境地址
@@ -73,6 +83,7 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
+<<<<<<< HEAD
 * 20180713
   * 版本号：1.2.2
   * 修改异常：取消时不退出APP
@@ -103,6 +114,17 @@ NSLog(@"url = %@", url);
   * 功能修改：
     * 修改环境依赖，剔除plist文件；
     * 修改样式属性统一title开头；
+=======
+## 20170708
+* 修改成present Controller样式
+
+## 20170422
+* SYNetworkEnvironment修复bug
+
+## 20170414
+ * 1、修改环境依赖，剔除plist文件；
+ * 2、修改样式属性统一title开头；
+>>>>>>> atHome
 
 
 

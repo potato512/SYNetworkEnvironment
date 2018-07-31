@@ -27,6 +27,7 @@
     // 添加到视图控制器，退出APP
 //    [NetworkEnvironment environmentWithTarget:self exitApp:YES complete:^{
 //
+//
 //    }];
     
     // 添加到视图控制器，不退出APP
