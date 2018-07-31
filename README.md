@@ -6,6 +6,13 @@
 ![networkSetting.gif](./images/networkSetting.gif)
 
 # 网络环境配置组件的使用
+
+
+* 使用介绍
+  * 自动导入：使用命令`pod 'SYNetworkEnvironment`导入到项目中
+  * 手动导入：或下载源码后，将源码添加到项目中
+  
+  
 * 1、导入 SYNetworkEnvironment 相关类文件
 * 2、导入头文件，如：
 ~~~ javascript
@@ -17,23 +24,13 @@
 {
     // Override point for customization after application launch.
 
-<<<<<<< HEAD
     // 环境设置
     NetworkEnvironment.environmentHost = @"0";
-=======
-
-    // 环境设置
-    NetworkEnvironment.environment = 0;
->>>>>>> atHome
     NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
     NetworkEnvironment.environmentHostRelease = @"http://www.baidu.com";
     NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
     // 初始化
     [NetworkEnvironment initializeEnvironment];
-<<<<<<< HEAD
-=======
-
->>>>>>> atHome
 
     return YES;
 }
@@ -83,7 +80,6 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
-<<<<<<< HEAD
 * 20180713
   * 版本号：1.2.2
   * 修改异常：取消时不退出APP
@@ -114,17 +110,8 @@ NSLog(@"url = %@", url);
   * 功能修改：
     * 修改环境依赖，剔除plist文件；
     * 修改样式属性统一title开头；
-=======
-## 20170708
-* 修改成present Controller样式
 
-## 20170422
-* SYNetworkEnvironment修复bug
 
-## 20170414
- * 1、修改环境依赖，剔除plist文件；
- * 2、修改样式属性统一title开头；
->>>>>>> atHome
 
 
 
