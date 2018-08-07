@@ -21,7 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
     // 环境设置
     NetworkEnvironment.environmentHost = @"0";
     NetworkEnvironment.environmentHostDebug = @"http://www.hao123.com";
@@ -29,7 +28,6 @@
     NetworkEnvironment.environmentHostDebugDict = @{@"天猫":@"http://www.tiaomiao.com",@"淘宝":@"http://www.taobao.com",@"京东":@"http://www.jindong.com"};
     // 初始化
     [NetworkEnvironment initializeEnvironment];
-    
     
     
     ViewController *rootVC = [[ViewController alloc] init];
