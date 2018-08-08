@@ -10,7 +10,7 @@
 #import "SYNetworkEnvironmentTable.h"
 #import "SYNetworkEnvironment.h"
 
-@interface SYNetworkEnvironmentController () <UIAlertViewDelegate>
+@interface SYNetworkEnvironmentController ()
 
 @property (nonatomic, strong) SYNetworkEnvironmentTable *environmentTable;
 @property (nonatomic, strong) NSString *selectedName;
@@ -117,41 +117,24 @@
 {
     NSInteger index = segment.selectedSegmentIndex;
     if (0 == index) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"添加地址" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        alertView.tag = 1000;
-        alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-        UITextField *nameField = [alertView textFieldAtIndex:0];
-        nameField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        nameField.placeholder = @"网络名称";
-        UITextField *valueTextField = [alertView textFieldAtIndex:1];
-        valueTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        valueTextField.secureTextEntry = NO;
-        valueTextField.placeholder = @"https:// 或 http:// 开头的网络地址";
-        [alertView show];
-    } else if (1 == index) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"删除地址" message:@"确定删除手动添加地址？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        alertView.tag = 1001;
-        [alertView show];
-    }
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if ([title isEqualToString:@"确定"]) {
-        if (1000 == alertView.tag) {
-            // 第一个输入框
-            UITextField *nameField = [alertView textFieldAtIndex:0];
-            NSString *name = nameField.text;
-            NSLog(@"name = %@",name);
-            
-            // 第二个输入框
-            UITextField *valueTextField = [alertView textFieldAtIndex:1];
-            NSString *value = valueTextField.text;
-            NSLog(@"value = %@",value);
-            
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"添加地址" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        // 添加文本框
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"网络名称";
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        }];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"https:// 或 http:// 开头的网络地址";
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        }];
+        // 添加按钮
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UITextField *urlName = alertController.textFields.firstObject;
+            UITextField *urlValue = alertController.textFields.lastObject;
+            NSString *name = urlName.text;
+            NSString *value = urlValue.text;
             BOOL isValidName = (name && 0 < name.length);
             BOOL isValidValue = ((value && 0 < value.length && ([value hasPrefix:@"http://"] || [value hasPrefix:@"https://"])));
             if (isValidName && isValidValue) {
@@ -177,8 +160,16 @@
                 self.environmentTable.environmentURLs = self.environmentURLs;
                 [self.environmentTable reloadData];
             }
-        } else if (1001 == alertView.tag) {
-            //
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:confirmAction];
+        [self presentViewController:alertController animated:YES completion:NULL];
+    } else if (1 == index) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除地址" message:@"确定删除手动添加地址？" preferredStyle:UIAlertControllerStyleAlert];
+        // 添加按钮
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSDictionary *dictTmp = [NetworkUserDefault objectForKey:kAddNetworkAddress];
             if (dictTmp) {
                 if ([dictTmp.allKeys containsObject:self.environmentName]) {
@@ -191,19 +182,22 @@
                     [dict removeObjectForKey:key];
                 }
                 self.environmentURLs = dict;
-            
+                
                 [NetworkUserDefault removeObjectForKey:kAddNetworkAddress];
                 [NetworkUserDefault synchronize];
                 
                 [NetworkEnvironment initializeEnvironment];
-
+                
                 self.environmentTable.environmentName = self.environmentName;
                 self.environmentTable.environmentURLs = self.environmentURLs;
                 [self.environmentTable reloadData];
                 
                 self.isDeleteAdd = YES;
             }
-        }
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:confirmAction];
+        [self presentViewController:alertController animated:YES completion:NULL];
     }
 }
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SYNetworkEnvironment"
-  s.version      = "1.2.3"
+  s.version      = "1.2.4"
   s.summary      = "SYNetworkEnvironment is used for setting network host as easy as possible while testing."
   s.homepage     = "https://github.com/potato512/SYNetworkEnvironment"
   s.license      = { :type => "MIT", :file => "LICENSE" }

@@ -305,21 +305,33 @@ static NSString *const keyNetworkEnvironmentOhter   = @"keyNetworkEnvironmentOht
 
 - (void)setEnvironmentHost:(NSString *)environmentHost
 {
+    if (!environmentHost || environmentHost.length <= 0) {
+        return ;
+    }
     [self.environmentDict setObject:environmentHost forKey:keyNetworkEnvironment];
 }
 
 - (void)setEnvironmentHostDebug:(NSString *)environmentHostDebug
 {
+    if (!environmentHostDebug || environmentHostDebug.length <= 0) {
+        return ;
+    }
     [self.environmentDict setObject:environmentHostDebug forKey:keyNetworkEnvironmentDevelop];
 }
 
 - (void)setEnvironmentHostRelease:(NSString *)environmentHostRelease
 {
+    if (!environmentHostRelease || environmentHostRelease.length <= 0) {
+        return ;
+    }
     [self.environmentDict setObject:environmentHostRelease forKey:keyNetworkEnvironmentPublic];
 }
 
 - (void)setEnvironmentHostDebugDict:(NSDictionary *)environmentHostDebugDict
 {
+    if (!environmentHostDebugDict || environmentHostDebugDict.count <= 0) {
+        return ;
+    }
     [self.environmentDict setObject:environmentHostDebugDict forKey:keyNetworkEnvironmentOhter];
 }
 

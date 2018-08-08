@@ -1,12 +1,13 @@
 # SYNetworkEnvironment
 网络环境设置（可设置多个网络环境），便于开发。避免切换不同的环境进行测试时，不断地重新进打包安装包文件。
 
- * 使用效果图
+
+使用效果图
 
 ![networkSetting.gif](./images/networkSetting.gif)
 
-# 网络环境配置组件的使用
 
+网络环境配置组件的使用
 
 * 使用介绍
   * 自动导入：使用命令`pod 'SYNetworkEnvironment`导入到项目中
@@ -15,11 +16,14 @@
   
 * 1、导入 SYNetworkEnvironment 相关类文件
 * 2、导入头文件，如：
-~~~ javascript
+
+```
 #import "SYNetworkEnvironment.h"
-~~~ 
+```
+
 * 3、初始化网络环境，即在方法"- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{}"中进行初始化。如：
-~~~ javascript
+
+```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -34,26 +38,33 @@
 
     return YES;
 }
-~~~
+```
+
 * 4、使用
   * （1）添加到视图控制器，便于显示交互视图。如果网络环境的keyNetworkEnvironment值为1，则在对应视图控制器的导航栏右按钮位置显示交互按钮；如果值为0，则不显示，但可以在对应视图控制器的导航栏右按钮位置通过连续点击5次显示交互选择视图。
-~~~ javascript
+
+
+```
 // 退出，或不退出APP
 [NetworkEnvironment environmentWithTarget:self exitApp:NO complete:^{
 
 }];
-~~~
+```
+
   * （2）添加到指定视图的指定位置
-~~~ javascript
+
+```
 [NetworkEnvironment environmentWithTarget:self frame:CGRectMake(10.0, 200.0, 100.0, 40.0) exitApp:NO complete:^{
 
 }];
-~~~
+```
+
   * （3）获取定义的网络环境，如：
-~~~ javascript
+
+```
 NSString *url = NetworkHost;
 NSLog(@"url = %@", url);
-~~~
+```
 
 5、注意事项
   * （1）网络环境初始化
@@ -80,6 +91,15 @@ NSLog(@"url = %@", url);
 
 
 # 修改完善
+* 20180808
+  * 版本号：1.2.4
+  * 修改完善
+    * 异常修复
+    * 适配iPad
+
+* 20180805
+  * 版本号：1.2.3
+
 * 20180713
   * 版本号：1.2.2
   * 修改异常：取消时不退出APP
